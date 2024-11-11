@@ -1,0 +1,69 @@
+Для 7 роботи 
+Тестування проводилось виключно на локальному серверві = сайті
+Було створено Тест План в Apache Jmeter
+В Тест план було додано "HTTP Request Default":
+  заповнення Protocol: http
+    Server Name or IP: diplom
+    Path: /product.php
+Створив Thread Group:
+  Number of Thereads(users): 10
+  Ramp-up period(seconds): 1
+  Loop Count: 1
+  При завантажені сайту виконується дії з додавання товару до кошику, 10 користувачів додають товар до кошику з періодом 1 секунди.
+В Thread Group додав HTTP Request"Add to cart requst".
+  заповнення:
+    Protocol: http
+    Server Name or IP: diplom
+    Path: /cart.php
+В HTTP Request додав JSON Extractor:
+  JSON Path expressions: $.cart.id
+  Match №.(0 for Random).
+В HTTP Request додав Regular Expression Extractor:
+  Regular Expression: Product ID:(\d+)
+  Template ($i$ where i is capturong group number, starts at 1): $1$
+  Match №.(0 for Random).
+Після заповнення необхідний даних.
+Маємо такі результати:
+  #Samples: 10
+  Average: 17
+  Min: 5
+  Max: 47
+  Std.Dev.: 13,38
+  Error %: 0,00%
+  Throughput: 12,1/sec
+  Received KB/sec: 262,71
+  Sent KB/sec: 1,40
+  Avg. Bytes: 22301,0
+
+Тестуємо оформлення заповнення.
+  Thread Group залишається без змін
+  HTTP Request(Checkout Request):
+    Protocol: http
+    Server Name or IP: diplom
+    Path: /checkout.php
+  Body Data:{
+    Product_id: "1"
+	  Quantity: "1"
+	  Full Name: "Roman Shepel"
+	  Email: "romasepel955@gmail.com"
+	  Address: "Yuzh"
+	  City: "Kyiv"
+	  State: "Kyiv"
+	  Zip: "123123"
+	  Name on Card: "Romas"
+	  Card Number: "1231231231231231"
+	  Exp Date: "12/25"
+  	CVV: "123"
+	  session_token: ""
+  }
+Має такі результати тестування: 
+  #Samples: 10
+  Average: 17
+  Min: 5
+  Max: 38
+  Std.Dev.: 11,29
+  Error %: 0,00%
+  Throughput: 10,7/sec
+  Received KB/sec: 246,42
+  Sent KB/sec: 4,81
+  Avg. Bytes: 23618,0
