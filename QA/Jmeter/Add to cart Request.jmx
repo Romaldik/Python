@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Add to cart Request">
+      <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+      <stringProp name="RegexExtractor.refname"></stringProp>
+      <stringProp name="RegexExtractor.regex">Product ID: (\d+)</stringProp>
+      <stringProp name="RegexExtractor.template">$1$</stringProp>
+      <stringProp name="RegexExtractor.default"></stringProp>
+      <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
+      <stringProp name="RegexExtractor.match_number">1</stringProp>
+      <stringProp name="Sample.scope">children</stringProp>
+    </RegexExtractor>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>

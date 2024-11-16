@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract cart ID">
+      <stringProp name="JSONPostProcessor.referenceNames"></stringProp>
+      <stringProp name="JSONPostProcessor.jsonPathExprs">$.cart.id</stringProp>
+      <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+    </JSONPostProcessor>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>
