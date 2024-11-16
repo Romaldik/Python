@@ -1,2 +1,2 @@
-# Python
-python labs university 
+# QA
+QA laboratory from the university
